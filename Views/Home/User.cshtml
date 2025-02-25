@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MyFirstMVC.Models.User>
+
+@{
+    ViewBag.Title = "User";
+}
+
+<h2>User</h2>
+
+<ul>
+    @foreach (var user in Model)
+            {
+                <li>
+                    @user.ID - @user.Name (@user.Email)
+                </li>
+            }
+</ul>
