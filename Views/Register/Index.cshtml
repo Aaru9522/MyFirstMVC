@@ -1,0 +1,72 @@
+﻿@model MyFirstMVC.Models.Register
+@{
+    ViewBag.Title = "User Registration";
+}
+
+<h2>User Registration</h2>
+
+@using (Html.BeginForm("Save", "Register", FormMethod.Post, new { @id = "frmUser" }))
+{
+
+    <div>
+        @Html.LabelFor(m => m.UserId)
+        @Html.TextBoxFor(m => m.UserId, new { @class = "form-control", placeholder = "Enter User ID" })
+    </div>
+    <br />
+
+    <div>
+        @Html.LabelFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Enter Your Name" })
+
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter Your Email" })
+
+    </div>
+
+    <br />
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+    </div>
+
+    <br />
+
+    <div>
+        <label>Gender:</label><br />
+        @Html.RadioButtonFor(m => m.Gender, "Male") <span>Male</span> <br />
+        @Html.RadioButtonFor(m => m.Gender, "Female") <span>Female</span> <br />
+        @Html.RadioButtonFor(m => m.Gender, "Other") <span>Other</span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Select Your Hobbies:</label><br />
+        @foreach (var hobby in ViewBag.AvailableHobbies as List<SelectListItem>)
+        {
+            <input type="checkbox" name="Hobbies" value="@hobby.Value" /> @hobby.Text <br />
+        }
+    </div>
+    <br />
+
+
+
+    <div>
+        @Html.LabelFor(m => m.Role, "Select Role")
+        @Html.DropDownListFor(m => m.Role, new SelectList(ViewBag.Roles, "Value", "Text"), "Select Role", new { @class = "form-control" })
+    </div>
+    
+    <br />
+
+    <div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+}
+
+
+

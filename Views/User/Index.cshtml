@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>
+            @user.ID - @user.Name (@user.Email)
+        </li>
+    }
+
+
+</ul>
+<form action="/User/DownloadFile" method="get">
+    <button type="submit">Download User Guide</button>
+</form>
